@@ -9,10 +9,10 @@ class PoissonResource(Resource):
     def post(self):
         data = BodyParser.bodyParser([
             {
-                'key': 'miu',
-                '_type': int,
+                'key': 'lambda',
+                '_type': str,
                 '_required': True,
-                '_help': 'miu cannot be blank!'
+                '_help': 'lambda cannot be blank!'
             },
             {
                 'key': 'size',
@@ -22,6 +22,4 @@ class PoissonResource(Resource):
             },
         ])
         poissonObj = Poisson()
-        poissonValues = poissonObj.calculate(data['size'], data['miu'])
-        accumulateValues = poissonObj.accumulate(poissonValues, data['size'])
-        return {'poissonValues': poissonObj.poissonValues(data['size'], data['miu'], accumulateValues)}
+        return {'poissonValues': poissonObj.inversePoisson(data['size'], float(data['lambda'])) }
