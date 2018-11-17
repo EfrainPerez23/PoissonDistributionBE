@@ -2,6 +2,7 @@ from random import random
 from math import e, factorial, pow, log, log10, log2
 from DataLayer.Models.Poisson import PoissonModel
 from scipy.stats import poisson
+from scipy.special import gamma
 import numpy as np  
 import xlwt
 
@@ -47,7 +48,7 @@ class Poisson:
         for i in range(_range):
             ran = random()
             _poisson.x = ran
-            _poisson.y = -1 / _lambda * log(1 - ran)
+            _poisson.y = abs((log(gamma(ran + 1)) + log(ran) + _lambda) / log(_lambda))
 
             if i  == 0:
                 ws = wb.add_sheet('Values')

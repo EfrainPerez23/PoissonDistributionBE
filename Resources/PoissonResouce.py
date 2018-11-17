@@ -22,4 +22,4 @@ class PoissonResource(Resource):
             },
         ])
         poissonObj = Poisson()
-        return {'poissonValues': poissonObj.inversePoisson(data['size'], float(data['lambda'])) }
+        return { 'poissonValues': poissonObj.inversePoisson(data['size'], float(data['lambda'])) }
