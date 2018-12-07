@@ -15,4 +15,4 @@ api.add_resource(PoissonResource, '/poisson')
 
 # Main function
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
